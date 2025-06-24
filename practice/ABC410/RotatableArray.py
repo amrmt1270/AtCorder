@@ -1,17 +1,15 @@
 N, Q=map(int, input().split())
 A=list(range(1, N+1))
-i=0
+offset=0
 for q in range(Q):
-    Query=list(map(int, input().split()))
-    if Query[0]==1:
-        p,x = Query[1],Query[2]
-        A[(-i+p)%N-1]=x
-    elif Query[0]==2:
-        p=Query[1]
-        if A[(-i+p)%N-1]!=0:
-            print(A[(-i+p)%N-1])
-        else:
-            print((-i+p)%N)
+    query = list(map(int, input().split()))
+    if query[0] == 1 :
+        p,x = query[1], query[2]
+        A[((offset + p) %N) -1] = x
+    elif query[0] == 2 :
+        p = query[1]
+        print(A[((offset + p) %N) -1])
     else:
-        k=Query[1]
-        i-=k
+        k = query[1]
+        offset = (offset + k) %N
+
